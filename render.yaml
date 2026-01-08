@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: openai-proxy
+    name: synthifai-proxy
     runtime: image
     image:
       url: ghcr.io/berriai/litellm:main-stable
