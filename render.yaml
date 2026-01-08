@@ -33,3 +33,6 @@ services:
 
       - key: DATABASE_URL
         sync: false
+
+      - key: STORE_MODEL_IN_DB
+        value: True
