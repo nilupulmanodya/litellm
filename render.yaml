@@ -30,3 +30,6 @@ services:
       # 3. LiteLLM Master Key (Optional but recommended for security)
       - key: LITELLM_MASTER_KEY
         sync: false
+
+      - key: DATABASE_URL
+        sync: false
