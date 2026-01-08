@@ -3,7 +3,7 @@ services:
     name: synthifai-proxy
     runtime: image
     image:
-      url: ghcr.io/berriai/litellm:main-stable
+      url: ghcr.io/berriai/litellm:main-v1.80.12-nightly
     numInstances: 1
     healthCheckPath: /health/liveliness
     autoDeploy: true
@@ -13,10 +13,10 @@ services:
       
       # Tell LiteLLM to use Langfuse
       - key: LITELLM_CALLBACKS
-        value: "langfuse"
+        value: '["langfuse_otel"]'
 
       # URL to your Langfuse instance
-      - key: LANGFUSE_HOST
+      - key: LANGFUSE_OTEL_HOST
         sync: false
       
       # 1. Langfuse Public Key
