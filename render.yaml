@@ -4,9 +4,29 @@ services:
     runtime: image
     image:
       url: ghcr.io/berriai/litellm:main-stable
-    envVars:
-      - key: PORT
-        value: 4000
     numInstances: 1
     healthCheckPath: /health/liveliness
     autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 4000
+      
+      # Tell LiteLLM to use Langfuse
+      - key: LITELLM_CALLBACKS
+        value: "langfuse"
+
+      # URL to your Langfuse instance
+      - key: LANGFUSE_HOST
+        sync: false
+      
+      # 1. Langfuse Public Key
+      - key: LANGFUSE_PUBLIC_KEY
+        sync: false
+
+      # 2. Langfuse Secret Key
+      - key: LANGFUSE_SECRET_KEY
+        sync: false
+        
+      # 3. LiteLLM Master Key (Optional but recommended for security)
+      - key: LITELLM_MASTER_KEY
+        sync: false
