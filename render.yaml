@@ -3,7 +3,7 @@ services:
     name: synthifai-proxy
     runtime: image
     image:
-      url: ghcr.io/berriai/litellm:main-v1.80.12-nightly
+      url: nilupulmanodya/synthifai-langfuse:latest
     numInstances: 1
     healthCheckPath: /health/liveliness
     autoDeploy: true
@@ -11,9 +11,6 @@ services:
       - key: PORT
         value: 4000
       
-      # Tell LiteLLM secret path
-      - key: LITELLM_CONFIG_PATH
-        value: '/etc/secrets/config.yaml'
 
       # URL to your Langfuse instance
       - key: LANGFUSE_OTEL_HOST
