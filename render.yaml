@@ -3,7 +3,7 @@ services:
     name: synthifai-proxy
     runtime: image
     image:
-      url: nilupulmanodya/synthifai-langfuse:latest
+      url: nilupulmanodya/synthifai-litellm:proxy
     numInstances: 1
     healthCheckPath: /health/liveliness
     autoDeploy: true
@@ -33,5 +33,3 @@ services:
 
       - key: STORE_MODEL_IN_DB
         value: True
-    
-    startCommand: "docker/prod_entrypoint.sh --port 4000 --config /app/synthifai_config.yaml"
