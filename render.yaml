@@ -33,3 +33,5 @@ services:
 
       - key: STORE_MODEL_IN_DB
         value: True
+    
+    startCommand: "docker/prod_entrypoint.sh --port 4000 --config /app/synthifai_config.yaml"

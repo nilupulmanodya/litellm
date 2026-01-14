@@ -83,4 +83,4 @@ COPY docker/supervisord.conf /etc/supervisord.conf
 ENTRYPOINT ["docker/prod_entrypoint.sh"]
 
 # Append "--detailed_debug" to the end of CMD to view detailed debug logs
-CMD ["--config", "/app/proxy_server_config.yaml", "--port", "4000"]
+CMD ["--port", "4000"]
