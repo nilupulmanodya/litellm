@@ -3,10 +3,33 @@ services:
     name: synthifai-proxy
     runtime: image
     image:
-      url: ghcr.io/berriai/litellm:main-stable
-    envVars:
-      - key: PORT
-        value: 4000
+      url: nilupulmanodya/synthifai-litellm:proxy
     numInstances: 1
     healthCheckPath: /health/liveliness
     autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 4000
+      
+
+      # URL to your Langfuse instance
+      - key: LANGFUSE_OTEL_HOST
+        sync: false
+      
+      # 1. Langfuse Public Key
+      - key: LANGFUSE_PUBLIC_KEY
+        sync: false
+
+      # 2. Langfuse Secret Key
+      - key: LANGFUSE_SECRET_KEY
+        sync: false
+        
+      # 3. LiteLLM Master Key (Optional but recommended for security)
+      - key: LITELLM_MASTER_KEY
+        sync: false
+
+      - key: DATABASE_URL
+        sync: false
+
+      - key: STORE_MODEL_IN_DB
+        value: True
