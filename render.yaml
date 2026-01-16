@@ -2,6 +2,7 @@ services:
   - type: web
     name: synthifai-proxy
     runtime: image
+    plan: standard
     image:
       url: nilupulmanodya/synthifai-litellm:proxy
     numInstances: 1
