@@ -2,6 +2,7 @@ services:
   - type: web
     name: synthifai-proxy
     runtime: image
+    region: frankfurt
     plan: standard
     image:
       url: nilupulmanodya/synthifai-litellm:proxy
