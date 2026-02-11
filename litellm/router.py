@@ -5831,7 +5831,17 @@ class Router:
             )
             # done reading model["litellm_params"]
             if custom_llm_provider not in litellm.provider_list:
-                raise Exception(f"Unsupported provider - {custom_llm_provider}")
+                from litellm.llms.openai_like.json_loader import JSONProviderRegistry
+
+                normalized_provider = custom_llm_provider.strip() if custom_llm_provider else None
+                if normalized_provider and JSONProviderRegistry.exists(normalized_provider.lower()):
+                    normalized_provider = normalized_provider.lower()
+
+                if not normalized_provider or not JSONProviderRegistry.exists(normalized_provider):
+                    raise Exception(f"Unsupported provider - {custom_llm_provider}")
+
+                if normalized_provider not in litellm.provider_list:
+                    litellm.provider_list.append(normalized_provider)
 
         #### DEPLOYMENT NAMES INIT ########
         self.deployment_names.append(deployment.litellm_params.model)

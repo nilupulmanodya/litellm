@@ -15,6 +15,7 @@ export enum Providers {
   Deepgram = "Deepgram",
   Deepseek = "Deepseek",
   ElevenLabs = "ElevenLabs",
+  Emby = "Emby",
   FalAI = "Fal AI",
   FireworksAI = "Fireworks AI",
   Google_AI_Studio = "Google AI Studio",
@@ -82,6 +83,7 @@ export const provider_map: Record<string, string> = {
   Triton: "triton",
   Deepgram: "deepgram",
   ElevenLabs: "elevenlabs",
+  Emby: "emby",
   FalAI: "fal_ai",
   SageMaker: "sagemaker_chat",
   Voyage: "voyage",
@@ -202,6 +204,8 @@ export const getPlaceholder = (selectedProvider: string): string => {
     return "deepinfra/<any-model-on-deepinfra>";
   } else if (selectedProvider == Providers.FalAI) {
     return "fal_ai/fal-ai/flux-pro/v1.1-ultra";
+  } else if (selectedProvider == Providers.Emby) {
+    return "emby/<model>";
   } else if (selectedProvider == Providers.RunwayML) {
     return "runwayml/gen4_turbo";
   } else if (selectedProvider === Providers.Watsonx) {

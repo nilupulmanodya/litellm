@@ -4566,6 +4566,11 @@ def embedding(  # noqa: PLR0915
             or custom_llm_provider == "together_ai"
             or custom_llm_provider == "nvidia_nim"
             or custom_llm_provider == "litellm_proxy"
+            or custom_llm_provider in litellm.openai_compatible_providers
+            or (
+                custom_llm_provider is not None
+                and JSONProviderRegistry.exists(custom_llm_provider)
+            )
         ):
             api_base = (
                 api_base
@@ -6730,6 +6735,10 @@ async def ahealth_check(
             api_base=api_base_from_params,
             api_key=api_key_from_params,
         )
+        # Normalize the request params for downstream health check calls.
+        model_params["model"] = model
+        if custom_llm_provider is not None:
+            model_params["custom_llm_provider"] = custom_llm_provider
         if model in litellm.model_cost and mode is None:
             mode = litellm.model_cost[model].get("mode")
 
